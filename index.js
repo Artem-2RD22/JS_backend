@@ -12,10 +12,11 @@ const authenticateToken = require('./middleware/auth');
 const PORT = 3333;
 
 const app = express();
-app.use(express.static('public'));
+
 app.use(cors({ origin: '*' }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use('/public', express.static('public')); // Serve static files from the 'public' directory
 
 app.use('/auth', auth);
 
